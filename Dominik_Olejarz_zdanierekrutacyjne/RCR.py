@@ -21,13 +21,13 @@ class RoboticCodeRepresentationGenerator:
         self.nodes = self.MakeNodes()
         self.huffmanCode = self.huffman_code_tree(self.nodes[0][0])
 
-    def huffman_code_tree(self,node, left=True, coding=''):
+    def huffman_code_tree(self, node, left=True, coding=""):
         if type(node) is str:
             return {node: coding}
         (l, r) = node.children()
         d = dict()
-        d.update(self.huffman_code_tree(l, True, coding + '0'))
-        d.update(self.huffman_code_tree(r, False, coding + '1'))
+        d.update(self.huffman_code_tree(l, True, coding + "0"))
+        d.update(self.huffman_code_tree(r, False, coding + "1"))
         return d
 
     def MakeNodes(self) -> list[NodeTree]:
@@ -55,4 +55,3 @@ class RoboticCodeRepresentationGenerator:
 
         freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
         return freq
-
